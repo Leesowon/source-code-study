@@ -3,13 +3,16 @@ package test;
 import javax.swing.*;
 import java.awt.*;
 
+// 클래스
 public class SpaceInvaderPage {
     private JFrame MainPage;
-    private JFrame StageSelectPage;
+    private JFrame SelectStagePage;
     public void setBounds(int x,int y,int width,int height){
     }
 
+    // 생성자
     public SpaceInvaderPage(){
+
         MainPage = new JFrame("Main Page"); // frame 생성
 
         // frame 크기 800x600으로 설정
@@ -22,7 +25,6 @@ public class SpaceInvaderPage {
         JLabel showGameName = new JLabel("Space Invaders");
         showGameName.setBounds(300, 100, 400, 100); // x, y, width, height
         MainPage.add(showGameName);
-
 
         // 버튼 생성 & 위치 설정
         JButton GameStartButton = new JButton("GameStart");
@@ -62,8 +64,43 @@ public class SpaceInvaderPage {
         MainPage.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
+    // 메소드
+    public void SelectStagePage(){
+        SelectStagePage = new JFrame("SelectStagePage"); // frame 생성
+
+        // frame 크기 800x600으로 설정
+        SelectStagePage.setPreferredSize(new Dimension(800,600));
+
+        // content pane 가져오기
+        Container SelectStageContainPane = SelectStagePage.getContentPane();
+
+        // 어떤 페이지인지 알 수 있도록 "STAGE"써있는 이미지 넣기
+        JLabel showGameName = new JLabel("STAGE");
+        showGameName.setBounds(0, 0, 800, 100); // x, y, width, height
+        SelectStagePage.add(showGameName);
+
+        // 버튼 생성 & 위치 설정
+        JButton[] stageButton = new JButton[5];
+        for(int i=0;i<5;i++){
+            stageButton[i] = new JButton("STAGE " + (i+1));
+            int y = 130 + 70*i;
+            stageButton[i].setBounds(100, y, 500, 60);
+        }
+
+        for(int i=0; i<5 ; i++){
+            SelectStageContainPane.add(stageButton[i]);
+        }
+
+        SelectStagePage.setLayout(null);
+        SelectStagePage.pack();
+        SelectStagePage.setVisible(true);
+
+        SelectStagePage.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+
     public static void main(String[] args) {
         SpaceInvaderPage FP = new SpaceInvaderPage();
+//        FP.SelectStagePage();
     }
 }
 
