@@ -2,6 +2,7 @@ package test;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
 
 // 클래스
 public class SpaceInvaderPage {
@@ -26,6 +27,9 @@ public class SpaceInvaderPage {
         showGameName.setBounds(300, 100, 400, 100); // x, y, width, height
         MainPage.add(showGameName);
 
+        // space invaders img 삽입
+
+
         // 버튼 생성 & 위치 설정
         JButton GameStartButton = new JButton("GameStart");
         GameStartButton.setBounds(100, 300, 600, 60);
@@ -39,21 +43,13 @@ public class SpaceInvaderPage {
         MainPageContainPane.add(GoStoreButton);
         MainPageContainPane.add(GoRankingButton);
 
-        /*
-        // 버튼 클릭시 화면 이동
-        GameStartButton.addActionListener(e ->
-        {
-            StageSelectPage = new JFrame("Stage Selcet Page");
-
-            JLabel label = new JLabel("This is Sub Page.");
-            label.setBounds(50, 50, 200, 30);
-
-            StageSelectPage.add(label);
-            StageSelectPage.setSize(300, 150);
-            StageSelectPage.setLayout(null);
-            StageSelectPage.setVisible(true);
+        GameStartButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                SelectStagePage();
+                MainPage.setVisible(false); // 창 안보이게 하기
+            }
         });
-         */
 
         //panel의 레이아웃 매니저를 null로 설정 : 컴포넌트들의 위치와 크기를 수동으로 설정 가능 하도록
         // setLayout(null)으로 설정하면 각 구성 요소의 위치와 크기를 직접 지정해야 함
